@@ -53,6 +53,19 @@ public class ServiceCommunicator {
         }
     }
 
+    public void hyphenate() {
+        String hyphenated = "";
+
+        for (char c : this.url.toCharArray()) {
+            if (c != ' ') {
+                hyphenated += c;
+            } else {
+                hyphenated += '-';
+            }
+        }
+        this.url = hyphenated;
+    }
+
     /*
        get() - read the reply from the webserver specified in the constructor.
              returns a string that captured the output from that service.

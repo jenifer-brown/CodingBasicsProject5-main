@@ -2,27 +2,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Television extends ServiceCommunicator {
-    protected String show;
     private ServiceCommunicator sc;
 
     Television(String show) {
-        this.show = show;
+        setURL("http://api.tvmaze.com/singlesearch/shows?q=" + show);
         hyphenate();
-        setURL("http://api.tvmaze.com/singlesearch/shows?q=" + this.show);
         connect();
-    }
-
-    private void hyphenate() {
-        String hyphenated = "";
-
-        for (char c : this.show.toCharArray()) {
-            if (c != ' ') {
-                hyphenated += c;
-            } else {
-                hyphenated += '-';
-            }
-        }
-        this.show = hyphenated;
     }
 
     public static void main(String args[]) {
